@@ -15,6 +15,7 @@ const Login = () => {
 
   const handleLogin = async (event) => {
       event.preventDefault();
+      console.log('banana')
 
       try {
         await firebase.auth().signInWithEmailAndPassword(emailAddress, password)
@@ -71,7 +72,7 @@ const Login = () => {
               className={`bg-blue-medium text-white w-full rounded h-8 font-bold}
           ${isInvalid && " opacity-50"}`}
             >
-              Log In
+              Login
             </button>
           </form>
         </div>

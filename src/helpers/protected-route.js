@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
@@ -9,7 +9,7 @@ export default function ProtectedRoute({ user, children, ...rest }) {
       {...rest}
       render={({ location }) => {
         if (user) {
-          return children
+          return React.cloneElement(children, { user });
         }
 
         if (!user) {
@@ -30,6 +30,6 @@ export default function ProtectedRoute({ user, children, ...rest }) {
 }
 
 ProtectedRoute.propTypes = {
-  user: propTypes.object,
-  children: propTypes.object.isRequired
+  user: PropTypes.object,
+  children: PropTypes.object.isRequired
 };
